@@ -1,5 +1,6 @@
 import sys
 import os
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from sqlalchemy import create_engine
@@ -9,14 +10,15 @@ from app.database import get_db
 from fastapi.testclient import TestClient
 from app.main import app
 
-# Setup an in-memory SQLite test DB
+# ✅ Setup an in-memory SQLite test DB
 SQLALCHEMY_DATABASE_URL = "sqlite:///:memory:"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 TestingSessionLocal = sessionmaker(bind=engine)
 
+# ✅ Create tables
 Base.metadata.create_all(bind=engine)
 
-# Override FastAPI dependency to use our test DB
+# ✅ Override FastAPI dependency
 def override_get_db():
     db = TestingSessionLocal()
     try:
