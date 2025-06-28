@@ -17,6 +17,16 @@ This is a fun and simple API built using FastAPI, that allows you to create, rea
 - **Schema Validation**: Pydantic
 - **Server**: Uvicorn
 
+## Test Coverage
+
+We used `pytest` and `coverage` to test the API, database integration, and core logic.
+
+```bash
+coverage run -m pytest
+coverage report
+coverage html
+
+
 ## How to Run the Server Locally
 
 ###  Clone & Install
